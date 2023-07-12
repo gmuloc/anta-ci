@@ -27,4 +27,3 @@ jobs:
             user_name: 'github-actions[bot]'
             user_email: 'github-actions[bot]@users.noreply.github.com'
             publish_dir: ./site
-            destination_dir: latest
