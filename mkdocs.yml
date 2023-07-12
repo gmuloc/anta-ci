@@ -61,7 +61,7 @@ extra:
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/anta/
   version:
-    provide: mike
+    provider: mike
 
 extra_css:
   - stylesheets/extra.material.css
