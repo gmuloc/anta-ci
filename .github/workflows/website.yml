@@ -15,7 +15,13 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Setup Git config
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
       - name: 'Build mkdocs content to site folder'
         run: |
             pip install -r ./docs/requirements.txt
             mike deploy --push devel
+            mike set-default --push devel
