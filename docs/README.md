@@ -1,4 +1,4 @@
-# ANTA Documentation - TESTING STUFF v6
+# ANTA Documentation - DEVEL MAN
 
 This website provides generic documentation related to the Arista Network Test Automation framework (ANTA)
 
