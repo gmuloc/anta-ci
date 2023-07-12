@@ -1,0 +1,180 @@
+# Project information
+site_name: Arista Network Test Automation - ANTA
+site_author: Khelil Sator
+site_description: Arista Network Test Automation
+copyright: Copyright &copy; 2019 - 2023 Arista Networks
+
+# Repository
+repo_name: ANTA on Github
+repo_url: https://github.com/arista-netdevops-community/anta
+
+# Configuration
+use_directory_urls: true
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.top
+    - content.tabs.link
+    - content.code.copy
+    # - toc.integrate
+    - toc.follow
+    - navigation.indexes
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - python
+    - shell
+  icon:
+    repo: fontawesome/brands/github
+    logo: fontawesome/solid/network-wired
+  favicon: imgs/favicon.ico
+  font:
+    code: Fira Mono
+  language: en
+  include_search_page: false
+  search_index_only: true
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/arista-netdevops-community/anta
+    - icon: fontawesome/brands/docker
+      link: https://github.com/arista-netdevops-community/anta/pkgs/container/network-test-automation
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/anta/
+
+extra_css:
+  - stylesheets/extra.material.css
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
+
+watch:
+  # Watch src/ directory to reload on changes to docstrings for mkdocstrings
+  # plugin.
+  - docs
+
+plugins:
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            show_root_heading: false
+            show_source: true
+      watch:
+        - anta
+  - search:
+      lang: en
+  - git-revision-date-localized:
+      type: date
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - mdx_truly_sane_lists
+  - smarty
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  # - fontawesome_markdown
+  - admonition
+  - codehilite:
+      guess_lang: true
+  - toc:
+      separator: "-"
+      # permalink: "#"
+      permalink: true
+      baselevel: 3
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.snippets:
+      base_path: 'docs/'
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+# TOC
+docs_dir: docs/
+nav:
+  - Home: README.md
+  - Getting Started: getting-started.md
+  - Installation: requirements-and-installation.md
+  - Inventory & Tests catalog: usage-inventory-catalog.md
+  - Anta CLI:
+    - Overview: cli/overview.md
+    - NRFU: cli/nrfu.md
+    - Execute commands: cli/exec.md
+    - Inventory from CVP: cli/inv-from-cvp.md
+    - Get Inventory Information: cli/get-inventory-information.md
+    - Helpers: cli/debug.md
+  - Advanced Usages:
+    - Create your own Library: advanced_usages/custom-tests.md
+    - ANTA as python lib: advanced_usages/as-python-lib.md
+  - Tests Catalog Documentation:
+    - Overview: api/tests.md
+    - AAA: api/tests.aaa.md
+    - Configuration: api/tests.configuration.md
+    - Connectivity: api/tests.connectivity.md
+    - Field Notices: api/tests.field_notices.md
+    - Hardware: api/tests.hardware.md
+    - Interfaces: api/tests.interfaces.md
+    - Logging: api/tests.logging.md
+    - MLAG: api/tests.mlag.md
+    - Multicast: api/tests.multicast.md
+    - Profiles: api/tests.profiles.md
+    - Routing:
+      - Generic: api/tests.routing.generic.md
+      - BGP: api/tests.routing.bgp.md
+      - OSPF: api/tests.routing.ospf.md
+    - Security: api/tests.security.md
+    - SNMP: api/tests.snmp.md
+    - STP: api/tests.stp.md
+    - Software: api/tests.software.md
+    - System: api/tests.system.md
+    - VxLAN: api/tests.vxlan.md
+  - API Documentation:
+    - Inventory: 
+      - Inventory module: api/inventory.md
+      - Inventory models: api/inventory.models.input.md
+    - Test:
+      - Test models: api/models.md
+    - Result Manager:
+      - Result Manager module: api/result_manager.md
+      - Result Manager models: api/result_manager_models.md
+    - Report Manager:
+      - Report Manager module: api/report_manager.md
+      - Report Manager models: api/report_manager_models.md
+  - Contributions: contribution.md
