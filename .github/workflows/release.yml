@@ -1,0 +1,87 @@
+---
+name: "Tag & Release management"
+on:
+  workflow_dispatch:
+  release:
+    types:
+      - published
+  # push:
+  #   # Sequence of patterns matched against refs/tags
+  #   tags:
+  #   - 'v[0-9]+.[0-9]+.[0-9]+' # Push events to matching v*, i.e. v1.0, v20.15.10
+jobs:
+  release-doc:
+    name: "Publish documentation for release ${{github.ref_name}}"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: 'Setup Python 3 on runner'
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: 'Build mkdocs content to site folder'
+        run: |
+          pip install -r ./docs/requirements.txt
+          mkdocs build -f mkdocs.yml
+      - name: ' Deploy ${{github.ref_name}} to github pages'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          publish_dir: ./site
+          destination_dir: ${{github.ref_name}}
+
+  # pypi:
+  #   name: Publish version to Pypi servers
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Install dependencies
+  #       run: |
+  #         python -m pip install --upgrade pip
+  #         pip install setuptools wheel build
+  #     - name: Build package
+  #       run: |
+  #         python -m build
+  #     - name: Publish package to Pypi
+  #       uses: pypa/gh-action-pypi-publish@release/v1
+  #       with:
+  #         user: __token__
+  #         password: ${{ secrets.PYPI_API_TOKEN }}
+
+  # docker:
+  #   name: Docker Image Build
+  #   runs-on: ubuntu-latest
+  #   needs: [pypi]
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+
+  #     - name: Docker meta for TAG
+  #       id: meta
+  #       uses: docker/metadata-action@v4
+  #       with:
+  #         images: ghcr.io/${{ github.repository }}
+  #         tags: |
+  #           type=semver,pattern={{version}}
+  #           type=raw,value=latest
+
+  #     - name: Login to GitHub Container Registry
+  #       uses: docker/login-action@v2
+  #       with:
+  #         registry: ghcr.io
+  #         username: ${{ github.actor }}
+  #         password: ${{ secrets.GITHUB_TOKEN }}
+
+  #     - name: Build and push
+  #       uses: docker/build-push-action@v4
+  #       with:
+  #         context: .
+  #         file: Dockerfile
+  #         push: true
+  #         platforms: linux/amd64,linux/arm64,linux/arm/v7
+  #         tags: ${{ steps.meta.outputs.tags }}
+  #         labels: ${{ steps.meta.outputs.labels }}

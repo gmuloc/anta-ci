@@ -1,0 +1,59 @@
+changelog:
+  exclude:
+    labels:
+      - 'rn: test(anta)'
+      - 'rn: ci(anta)'
+      - 'rn: test(anta.tests)'
+      - 'rn: ci(anta.tests)'
+      - 'rn: test(anta.cli)'
+      - 'rn: ci(anta.cli)'
+      - 'rn: test'
+      - 'rn: ci'
+  categories:
+    - title: Breaking Changes
+      labels:
+        - 'rn: feat(anta)!'
+        - 'rn: feat(anta.tests)!'
+        - 'rn: feat(anta.cli)!'
+        - 'rn: fix(anta)!'
+        - 'rn: fix(anta.tests)!'
+        - 'rn: fix(anta.cli)!'
+        - 'rn: cut(anta)!'
+        - 'rn: cut(anta.tests)!'
+        - 'rn: cut(anta.cli)!'
+        - 'rn: revert(anta)!'
+        - 'rn: revert(anta.tests)!'
+        - 'rn: revert(anta.cli)!'
+        - 'rn: refactor(anta)!'
+        - 'rn: refactor(anta.tests)!'
+        - 'rn: refactor(anta.cli)!'
+        - 'rn: bump(anta)!'
+        - 'rn: bump(anta.tests)!'
+        - 'rn: bump(anta.cli)!'
+        - 'rn: feat!'
+        - 'rn: fix!'
+        - 'rn: cut!'
+        - 'rn: revert!'
+        - 'rn: refactor!'
+        - 'rn: bump!'
+    - title: New features and enhancements
+      labels:
+        - 'rn: feat(anta)'
+        - 'rn: feat(anta.tests)'
+        - 'rn: feat(anta.cli)'
+        - 'rn: feat'
+    - title: Fixed issues
+      labels:
+        - 'rn: fix(anta)'
+        - 'rn: fix(anta.tests)'
+        - 'rn: fix(anta.cli)'
+        - 'rn: fix'
+    - title: Documentation
+      labels:
+        - 'rn: doc(anta)'
+        - 'rn: doc(anta.tests)'
+        - 'rn: doc(anta.cli)'
+        - 'rn: doc'
+    - title: Other Changes
+      labels:
+        - '*'
