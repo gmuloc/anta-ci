@@ -87,6 +87,7 @@ plugins:
       lang: en
   - git-revision-date-localized:
       type: date
+  - mike:
 
 markdown_extensions:
   - attr_list
