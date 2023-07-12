@@ -60,6 +60,8 @@ extra:
       link: https://github.com/arista-netdevops-community/anta/pkgs/container/network-test-automation
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/anta/
+  version:
+    provide: mike
 
 extra_css:
   - stylesheets/extra.material.css
