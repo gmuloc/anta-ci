@@ -62,6 +62,9 @@ extra:
       link: https://pypi.org/project/anta/
   version:
     provider: mike
+    default:
+      - stable
+      - latest
 
 extra_css:
   - stylesheets/extra.material.css

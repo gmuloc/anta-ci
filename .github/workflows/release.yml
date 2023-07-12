@@ -22,15 +22,7 @@ jobs:
       - name: 'Build mkdocs content to site folder'
         run: |
           pip install -r ./docs/requirements.txt
-          mkdocs build -f mkdocs.yml
-      - name: ' Deploy ${{github.ref_name}} to github pages'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          publish_dir: ./site
-          destination_dir: ${{github.ref_name}}
+          mike deploy --update-alias --push  ${{github.ref_name}} stable
 
   # pypi:
   #   name: Publish version to Pypi servers
