@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+
 jobs:
   'build_doc':
     name: 'Update Public documentation'
