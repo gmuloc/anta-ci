@@ -8,4 +8,7 @@ updates:
   - package-ecosystem: "pip"
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "weekly
+    commit-message:
+      # Prefix all commit messages with "npm: "
+      prefix: "bump"
