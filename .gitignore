@@ -2,6 +2,7 @@ __pycache__
 *.pyc
 .pages
 .coverage
+.coverage.json
 .pytest_cache
 build
 dist

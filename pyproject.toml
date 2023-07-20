@@ -207,6 +207,9 @@ exclude_lines = [
 
 ignore_errors = true
 
+[tool.coverage.json]
+output = ".coverage.json"
+
 [tool.coverage.html]
 directory = "coverage_html_report"
 
@@ -263,6 +266,7 @@ deps = coverage[toml]
 commands =
   coverage --version
   coverage report --rcfile=pyproject.toml
+  coverage json --rcfile=pyproject.toml
 # add the following to make the report fail under some percentage
 # commands = coverage report --fail-under=80
 depends = py311
