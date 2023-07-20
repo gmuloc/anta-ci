@@ -31,3 +31,4 @@ jobs:
             pip install -r ./docs/requirements.txt
             mike deploy --push devel
             mike set-default --push devel
+

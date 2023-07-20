@@ -3,7 +3,7 @@ name: Linting and Testing Anta
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
@@ -80,6 +80,23 @@ jobs:
         run: pip install tox tox-gh-actions
       - name: "Run pytest via tox for ${{ matrix.python }}"
         run: tox
+  coverage:
+    name: Anta Coverage
+    runs-on: ubuntu-20.04
+    needs: [test-python]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install tox tox-gh-actions
+      - name: "Run tox coverage"
+        run: tox -e report
+        # next step only on releases
+      - name: Update coverage badge
+        uses: we-cli/coverage-badge-action@main
   test-documentation:
     name: Build offline documentation for testing
     runs-on: ubuntu-20.04
@@ -87,6 +104,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
-        run: pip install -r docs/requirements.txt
+        run: pip install .[doc]
       - name: "Build mkdocs documentation offline"
         run: mkdocs build
