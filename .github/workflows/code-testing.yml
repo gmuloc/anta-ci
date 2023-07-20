@@ -99,6 +99,11 @@ jobs:
         #    path: .coverage
       - name: Coverage Badge
         uses: tj-actions/coverage-badge-py@v2
+      #  https://stackoverflow.com/questions/75030513/github-actions-how-to-access-badges
+      - name: Publish coverage report to coverage-badge branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: coverage-badge
   test-documentation:
     name: Build offline documentation for testing
     runs-on: ubuntu-20.04
