@@ -97,6 +97,8 @@ jobs:
         with:
           name: code-coverage-report
           path: .coverage
+      - name: permissions
+        run: chmod 666 .coverage
       - name: Coverage Badge
         uses: tj-actions/coverage-badge-py@v2
       #  https://stackoverflow.com/questions/75030513/github-actions-how-to-access-badges
