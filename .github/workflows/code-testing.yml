@@ -84,12 +84,17 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
-          path: .coverage.json
+          path: .coverage
   coverage:
     name: Anta Coverage
     runs-on: ubuntu-20.04
     needs: [test-python]
     steps:
+      - uses: actions/checkout@v3
+        #- uses: actions/download-artifact@v3
+        #  with:
+        #    name: code-coverage-report
+        #    path: .coverage
       - name: Coverage Badge
         uses: tj-actions/coverage-badge-py@v2
   test-documentation:
