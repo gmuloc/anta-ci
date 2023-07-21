@@ -245,8 +245,7 @@ description = Check the code style
 commands =
   black --check --diff --color .
   isort --check --diff --color .
-  flake8 --max-line-length=165 --config=/dev/null anta
-  flake8 --max-line-length=165 --config=/dev/null tests
+  flake8 --max-line-length=165 --config=/dev/null anta tests
   pylint anta
 
 [testenv:type]
