@@ -84,28 +84,29 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
-          path: .coverage
+          path: .coverage.xml
   coverage:
     name: Anta Coverage
     runs-on: ubuntu-20.04
     needs: [test-python]
     steps:
-      - uses: actions/checkout@v3
-      - name: Install dependencies
-        run: pip install coverage[toml]
       - uses: actions/download-artifact@v3
         with:
           name: code-coverage-report
-          path: .coverage
-      - name: permissions
-        run: chmod 666 .coverage
-      - name: Coverage Badge
-        uses: tj-actions/coverage-badge-py@v2
-      #  https://stackoverflow.com/questions/75030513/github-actions-how-to-access-badges
+          path: .coverage.xml
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install genbadge[coverage]
+      - name: Generate badge
+        run: genbadge coverage -i .coverage.xml -o badge/coverage.svg
       - name: Publish coverage report to coverage-badge branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: coverage-badge
+          folder: badge
   test-documentation:
     name: Build offline documentation for testing
     runs-on: ubuntu-20.04

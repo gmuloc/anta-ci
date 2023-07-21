@@ -207,8 +207,8 @@ exclude_lines = [
 
 ignore_errors = true
 
-[tool.coverage.json]
-output = ".coverage.json"
+[tool.coverage.xml]
+output = ".coverage.xml"
 
 [tool.coverage.html]
 directory = "coverage_html_report"
@@ -231,8 +231,8 @@ envlist =
 python =
   3.8: py38
   3.9: py39
-  3.10: erase, py310, report
-  3.11: py311
+  3.10: py310
+  3.11: erase, py311, report
 
 [testenv]
 description = Run pytest with {basepython}
@@ -262,11 +262,12 @@ commands = coverage erase
 
 [testenv:report]
 description = Generate coverage report
-deps = coverage[toml]
+deps =
+  coverage[toml]
+  genbadge[coverage]
 commands =
   coverage --version
   coverage report --rcfile=pyproject.toml
-  coverage json --rcfile=pyproject.toml
 # add the following to make the report fail under some percentage
 # commands = coverage report --fail-under=80
 depends = py311
