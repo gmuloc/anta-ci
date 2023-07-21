@@ -93,7 +93,6 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: code-coverage-report
-          path: .coverage.xml
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
